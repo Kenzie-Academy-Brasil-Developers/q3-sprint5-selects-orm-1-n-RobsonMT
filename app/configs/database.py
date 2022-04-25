@@ -10,4 +10,5 @@ def init_app(app: Flask):
     app.db = db
 
     from app.models.team_model import TeamModel
+
     from app.models.athletes_model import AthletesModel

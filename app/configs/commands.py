@@ -5,15 +5,13 @@ from app.models.team_model import TeamModel
 from ujson import load
 
 
-
 def read_json(filename: str):
     with open(filename) as j_file:
         return load(j_file)
 
 
-
 def cli_team(app: Flask):
-    cli = AppGroup('cli_team')
+    cli = AppGroup("cli_team")
 
     @cli.command("create")
     def cli_team_create():
@@ -30,7 +28,7 @@ def cli_team(app: Flask):
 
 
 def cli_athletes(app: Flask):
-    cli = AppGroup('cli_athletes')
+    cli = AppGroup("cli_athletes")
 
     @cli.command("create")
     def cli_athlets_create():
@@ -44,7 +42,6 @@ def cli_athletes(app: Flask):
             row.pop("team")
 
         to_insert = [AthletesModel(**data) for data in data_athletes]
-        
 
         session.add_all(to_insert)
         session.commit()
@@ -52,8 +49,6 @@ def cli_athletes(app: Flask):
     app.cli.add_command(cli)
 
 
-
 def init_app(app: Flask):
     cli_team(app)
     cli_athletes(app)
-

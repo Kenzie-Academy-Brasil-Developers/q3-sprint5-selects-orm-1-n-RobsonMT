@@ -1,6 +1,5 @@
 from flask import Blueprint
 
-
 bp_athlete = Blueprint("bp_athlete", __name__)
 
 
